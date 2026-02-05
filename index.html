@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TJ | Climate Hazards & Risk</title>
+  <meta name="description" content="TJ — Extreme Climate Hazards & Risk | Science-to-Decision Translation" />
+  <style>
+    :root { --fg:#111; --muted:#555; --bg:#fff; --card:#f6f6f7; --line:#e7e7ea; }
+    body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 56px 22px; }
+    header { display:flex; gap:18px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; }
+    h1 { margin:0; font-size: 34px; letter-spacing:-0.02em; }
+    .tag { color:var(--muted); margin-top:6px; font-size: 15px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px 18px; margin-top:18px; }
+    h2 { margin:0 0 10px; font-size: 18px; letter-spacing:-0.01em; }
+    p { margin: 10px 0; }
+    a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+    nav a { margin-right: 14px; color:var(--muted); text-decoration:none; }
+    nav a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    .grid { display:grid; grid-template-columns: 1fr; gap:14px; }
+    @media (min-width: 820px){ .grid { grid-template-columns: 1fr 1fr; } }
+    .muted { color:var(--muted); }
+    .pill { display:inline-block; padding:6px 10px; border:1px solid var(--line); border-radius:999px; margin:6px 8px 0 0; background:#fff; }
+    footer { margin-top: 40px; color:var(--muted); font-size: 13px; border-top:1px solid var(--line); padding-top: 14px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>TJ</h1>
+        <div class="tag">Extreme Climate Hazards &amp; Risk · Science-to-Decision Translation</div>
+      </div>
+      <nav aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="about" class="card">
+      <h2>About</h2>
+      <p>
+        I earned my Ph.D. at <strong>UC Berkeley</strong> (2024) with Prof. Cynthia Gerlein-Safdi and am currently a
+        <strong>Postdoctoral Researcher</strong> at <strong>Princeton University</strong> with Prof. Gabriele Villarini.
+        I work at the intersection of <strong>hydrology</strong> and <strong>computer vision</strong>.
+      </p>
+      <p>
+        I was born and raised in Wuxi, China, on the shores of <a href="https://whc.unesco.org/en/tentativelists/5460/" target="_blank" rel="noopener">Tai Lake</a>
+        (<span class="muted">major freshwater lake in the Yangtze River Delta</span>), with the
+        <a href="https://whc.unesco.org/en/list/1443/" target="_blank" rel="noopener">Grand Canal</a>
+        (<span class="muted">UNESCO-listed ancient waterway</span>) running through the city—both inspiring my pursuit of environmental engineering.
+      </p>
+    </section>
+
+    <section id="research" class="card">
+      <h2>Research Focus</h2>
+      <p>
+        My research integrates <strong>remote sensing</strong>, <strong>modeling</strong>, and <strong>data-driven methods</strong> to translate complex environmental processes into decision-relevant insights.
+        I focus on high-impact hazards including <strong>extreme flooding</strong>, <strong>wildfires</strong>, and <strong>hailstorms</strong>, and develop scalable algorithms and tools at global and large-regional scales.
+      </p>
+      <div>
+        <span class="pill">Flood risk &amp; extremes</span>
+        <span class="pill">Remote sensing</span>
+        <span class="pill">Computer vision</span>
+        <span class="pill">Science-to-decision</span>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section id="publications" class="card">
+        <h2>Publications</h2>
+        <p class="muted">Add links to Google Scholar / ORCID / papers here.</p>
+        <ul>
+          <li><a href="#" onclick="return false;">Google Scholar (add link)</a></li>
+          <li><a href="#" onclick="return false;">ORCID (add link)</a></li>
+          <li><a href="#" onclick="return false;">CV PDF (add link)</a></li>
+        </ul>
+      </section>
+
+      <section id="contact" class="card">
+        <h2>Contact</h2>
+        <p class="muted">Add your preferred contact links.</p>
+        <ul>
+          <li>Email: <a href="#" onclick="return false;">(add)</a></li>
+          <li>GitHub: <a href="#" onclick="return false;">(add)</a></li>
+          <li>LinkedIn: <a href="#" onclick="return false;">(add)</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <footer>
+      © <span id="y"></span> TJ · Built with GitHub Pages
+    </footer>
+  </div>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>
