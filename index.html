@@ -1,100 +1,1244 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TJ | Climate Hazards & Risk</title>
-  <meta name="description" content="TJ — Extreme Climate Hazards & Risk | Science-to-Decision Translation" />
-  <style>
-    :root { --fg:#111; --muted:#555; --bg:#fff; --card:#f6f6f7; --line:#e7e7ea; }
-    body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
-    .wrap { max-width: 900px; margin: 0 auto; padding: 56px 22px; }
-    header { display:flex; gap:18px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; }
-    h1 { margin:0; font-size: 34px; letter-spacing:-0.02em; }
-    .tag { color:var(--muted); margin-top:6px; font-size: 15px; }
-    .card { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:18px 18px; margin-top:18px; }
-    h2 { margin:0 0 10px; font-size: 18px; letter-spacing:-0.01em; }
-    p { margin: 10px 0; }
-    a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
-    nav a { margin-right: 14px; color:var(--muted); text-decoration:none; }
-    nav a:hover { text-decoration: underline; text-underline-offset: 3px; }
-    .grid { display:grid; grid-template-columns: 1fr; gap:14px; }
-    @media (min-width: 820px){ .grid { grid-template-columns: 1fr 1fr; } }
-    .muted { color:var(--muted); }
-    .pill { display:inline-block; padding:6px 10px; border:1px solid var(--line); border-radius:999px; margin:6px 8px 0 0; background:#fff; }
-    footer { margin-top: 40px; color:var(--muted); font-size: 13px; border-top:1px solid var(--line); padding-top: 14px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tianjiao Pu | Home Page</title>
+    <style>
+
+    /* 遮罩层背景 */
+    #image-viewer {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.9); /* 半透明黑 */
+        cursor: zoom-out;
+    }
+
+    /* 弹出后的图片 */
+    #full-image {
+        margin: auto;
+        display: block;
+        max-width: 90%;
+        max-height: 90%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 4px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    /* 给你的 project-figure 图片增加一个放大镜手势 */
+    .project-figure img {
+        cursor: zoom-in;
+    }
+
+        /* Style for the expandable section */
+      details summary {
+          cursor: pointer;
+          padding: 15px 0;
+          color: #0055CC;
+          font-weight: 500;
+          font-size: 0.95rem;
+          list-style: none; /* Removes the default arrow */
+          text-align: center;
+          border-top: 1px solid #eee;
+          margin-top: 10px;
+      }
+
+      details summary:hover {
+          text-decoration: underline;
+      }
+
+      /* Add a custom plus icon or text indicator */
+      details summary::after {
+          content: " ↓";
+      }
+
+      details[open] summary::after {
+          content: " ↑";
+      }
+
+      details[open] summary {
+          margin-bottom: 20px;
+      }
+        /* --- 基础设置 --- */
+      body {
+          font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          line-height: 1.7;
+          color: #374151;
+          margin: 0;
+          display: flex;
+          background-color: #ffffff; /* 高级米灰色背景 */
+      }
+
+      /* --- 左侧导航栏 --- */
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 40px 30px; /* 稍微减小上下 padding，给内容留空间 */
+    border-right: 1px solid rgba(0,0,0,0.05);
+    background-color: #ffffff;
+    z-index: 100;
+    box-sizing: border-box;
+
+    /* 核心修改：允许垂直方向滚动 */
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;  /* 如果内容太长，允许侧边栏内部滚动 */
+    overflow-x: hidden;
+    
+    /* 核心修改：调整间距 */
+    gap: 30px; /* 将原来的 50px 缩小，防止撑得太开 */
+}
+
+/* 隐藏滚动条（可选，让界面更整洁，但保留滚动功能） */
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+    background: #eee;
+    border-radius: 10px;
+}
+
+                                /* 侧边栏底部社交链接 */
+        .sidebar-footer {
+            margin-top: auto;
+            display: flex;
+            flex-wrap: wrap; /* 链接多时自动换行 */
+            gap: 8px;        /* 按钮之间的间距 */
+            padding-bottom: 0px;
+        }
+
+        .sidebar-footer a {
+            font-size: 0.75rem;
+            color: #666;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            
+            /* 背景修饰 */
+            background: rgba(0, 0, 0, 0.04); /* 极淡的背景色 */
+            padding: 5px 10px;               /* 内部撑开感 */
+            border-radius: 4px;              /* 微圆角 */
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-footer a:hover {
+            background: #0055CC;             /* 悬停变蓝色 */
+            color: #ffffff;                  /* 文字变白 */
+            transform: translateY(-2px);     /* 悬停轻微上浮 */
+        }
+
+        .nav-name { display: flex; flex-direction: column; line-height: 1.3; }
+        .en-name { font-size: 1.5rem; font-weight: 700; color: #111; }
+        .cn-name { font-size: 1.4rem; color: #888; margin-top: 4px; }
+
+
+        /* 导航区域容器 */
+      .nav-links {
+          display: flex;
+          flex-direction: column;
+          gap: 8px; /* 按钮之间的紧凑间距 */
+      }
+
+      /* 按钮基础样式 */
+      .nav-links a {
+          display: block;
+          padding: 12px 18px;
+          font-size: 0.85rem;
+          font-weight: 500;
+          color: #555;
+          text-decoration: none !important;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          border-radius: 8px; /* 圆角让它更像按钮 */
+          background: transparent;
+          transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          border: 1px solid transparent; /* 预留边框位置，防止悬停时抖动 */
+      }
+
+      /* 悬停时的按钮状态 */
+      .nav-links a:hover {
+          background-color: rgba(0, 85, 204, 0.05); /* 极淡的蓝色背景 */
+          color: #0055CC;
+          /* border: 1px solid rgba(0, 85, 204, 0.1); 淡淡的边框线 */
+          padding-left: 22px; /* 悬停时文字微移，增加动感 */
+      }
+
+      /* 当前活跃页面的样式 (Active State) */
+      .nav-links a.active {
+          background-color: #0055CC;
+          color: #ffffff;
+          box-shadow: 0 4px 12px rgba(0, 85, 204, 0.15);
+      }
+
+      /* 侧边栏底部社交按钮的微调 (使其与上方按钮风格统一) */
+      .sidebar-footer a {
+          border: 1px solid #f0f0f0;
+          background: #fff;
+          font-weight: 600;
+      }
+
+        /* --- 右侧主内容区 --- */
+        .content {
+            margin-left: 250px; /* 留出侧边栏宽度 */
+            padding: 80px 60px;
+            max-width: 950px; /* 稍微调宽一点，确保并排更美观 */
+            width: 100%;
+        }
+
+        /* --- 个人简介容器 (核心修改: 确保并排) --- */
+        .profile-container {
+            display: flex;
+            flex-direction: row; 
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .profile-text {
+            flex: 3;
+            min-width: 0;
+        }
+
+        .profile-image-container {
+            flex: 1.2;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%; 
+            object-fit: cover;
+            border: 0px solid #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+           /* border-radius: 28px; 轻微圆角比直角更现代 */
+            transition: transform 0.3s ease;
+        }
+
+        /* --- 标题与表格 --- */
+        h2 { 
+            font-size: 1.7rem; 
+            color: #111;
+            border-bottom: none;
+            padding-bottom: 8px; 
+            margin-top: 70px; 
+        }
+
+                .news-item {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            display: flex;
+            gap: 15px;
+        }
+
+        .news-date {
+            color: #999;
+            font-family: monospace; /* 日期使用等宽字体更显严谨 */
+            min-width: 85px;
+            flex-shrink: 0;
+        }
+
+        .news-content {
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* 给 News 一个小的蓝色标记，增加一点 Vibe */
+        .news-content b {
+            color: #0055CC;
+            font-weight: 500;
+        }
+        
+        /* 教育经历表格 - 取消横线 */
+        .edu-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .edu-table td { 
+            padding: 4px 0; /* 控制行高，如果想让行间距大一点，可以调高这个值 */
+            border-bottom: none; /* 核心修改：取消中间的横线 */
+            vertical-align: top;
+        }
+
+        .degree { 
+            font-weight: 600; 
+            width: 80px; 
+            color: #111;
+        }
+
+        .year { 
+            text-align: right; 
+            color: #111; 
+            width: 80px; 
+        }
+      .philosophy-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+          margin-top: 40px;
+      }
+
+      .philosophy-card {
+          padding: 25px;
+          background-color: #ebebeb37; /* 极淡的冷蓝色，体现水文与计算感 */
+          border: 1px solid #edf2f7; /* 极细的边框，定义边界 */
+          border-radius: 20px;       /* 柔和的圆角 */
+          transition: transform 0.2s ease; /* 增加一点交互感 */
+      }
+
+      /* 悬停时稍微浮起，让界面更生动 */
+      .philosophy-card:hover {
+          transform: translateY(-2px);
+          background-color: #f3f7ff;
+          border-color: #e2e8f0;
+      }
+
+      .philosophy-card p {
+          margin: 0;
+          font-style: italic;
+          font-size: 0.92rem;
+          line-height: 1.7;
+          color: #4a5568;
+      }
+
+      .philosophy-card b {
+          color: #2d3748;
+          font-style: normal;
+          font-weight: 600;
+      }
+
+      .philosophy-card a {
+          color: #0055CC;
+          text-decoration: none;
+          border-bottom: 0px solid rgba(0, 85, 204, 0.2);
+      }
+
+      .philosophy-card a:hover {
+          border-bottom: 1px solid #0055CC;
+      }
+
+      @media (max-width: 768px) {
+          .philosophy-grid {
+              grid-template-columns: 1fr;
+          }
+      }
+      /* Mobile handling */
+      @media (max-width: 768px) {
+          .edu-philosophy-row {
+              flex-direction: column;
+              gap: 40px;
+          }
+      }
+      .project-item {
+          display: flex;
+          gap: 30px;
+          margin-bottom: 50px;
+          align-items: flex-start;
+      }
+
+      .project-figure {
+          flex: 0 0 280px; /* 固定图片宽度 */
+          height: 280px;
+          background: #f5f5f5;
+          border-radius: 4px;
+          overflow: hidden;
+          border: 1px solid #eee;
+      }
+
+      .project-figure img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover; /* 确保图片不失真 */
+          transition: transform 0.3s ease;
+      }
+
+      .project-figure:hover img {
+          transform: scale(1.05); /* 微小的缩放效果 */
+      }
+
+      .project-info {
+          flex: 1;
+      }
+
+      .project-info h3 {
+          margin: 0 0 12px 0;
+          font-size: 1.2rem;
+          color: #111;
+      }
+
+      .project-description {
+          font-size: 0.95rem;
+          color: #555;
+          line-height: 1.6;
+          margin-bottom: 15px;
+      }
+
+      .project-tags {
+          display: flex;
+          gap: 10px;
+      }
+
+      .tag {
+          font-size: 0.75rem;
+          background: #f0f0f0;
+          padding: 2px 8px;
+          border-radius: 3px;
+          color: #666;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+      }
+
+      .teaching-item {
+          display: flex;
+          gap: 20px;
+          margin-bottom: 10px;
+          font-size: 0.95rem;
+          align-items: baseline;
+      }
+
+      .teaching-year {
+          flex: 0 0 80px;
+          color: #999;
+          font-family: monospace;
+      }
+
+      .course-id {
+          flex: 0 0 120px;
+          font-weight: 500;
+          color: #444;
+      }
+
+      .course-name {
+          flex: 1;
+          color: #333;
+      }
+
+      .teaching-role {
+          font-size: 0.85rem;
+          text-transform: uppercase;
+          letter-spacing: 0.5px;
+          color: #0055CC;
+          margin-bottom: 15px;
+          margin-top: 25px;
+          display: block;
+          border-bottom: 1px solid #f0f0f0;
+          padding-bottom: 5px;
+      }
+
+     .pres-container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+    .pres-row {
+        display: flex;
+        gap: 30px;
+        padding: 12px 0;
+        border-bottom: 1px solid #f9f9f9; /* 极淡的分隔线 */
+        transition: background 0.2s ease;
+     }
+
+    .pres-row:hover {
+        background-color: #fafafa; /* 鼠标经过时的微妙反馈 */
+      }
+
+      /* 左侧：会议简称与年份 */
+      .pres-meta {
+          flex: 0 0 130px;
+          font-family: 'Inter', -apple-system, sans-serif;
+          font-size: 0.85rem;
+          color: #888;
+          line-height: 1.4;
+      }
+
+      .pres-venue-tag {
+          display: block;
+          font-weight: 600;
+          color: #444;
+          margin-bottom: 2px;
+      }
+
+      /* 右侧：标题与详情 */
+      .pres-content {
+          flex: 1;
+      }
+
+    .pres-title {
+        font-size: 0.98rem;
+        font-weight: 500;
+        color: #111;
+        line-height: 1.5;
+        margin-bottom: 4px;
+        display: block;
+    }
+
+      .pres-location {
+          font-size: 0.85rem;
+          color: #777;
+          font-style: normal;
+      }
+
+      .pres-detail-link {
+          color: #0055CC;
+          text-decoration: none;
+          font-size: 0.85rem;
+          margin-left: 8px;
+      }
+
+      /* 身份/类型标识 */
+      .status-badge {
+          font-size: 0.75rem;
+          padding: 1px 6px;
+          border-radius: 3px;
+          margin-left: 5px;
+          font-weight: normal;
+      }
+    .badge-invited { background: #eef4ff; color: #0055CC; }
+    .badge-poster { background: #f5f5f5; color: #777; }
+    .badge-collab { border: 1px solid #eee; color: #999; }
+    .skill-group {
+                margin-bottom: 25px;
+            }
+
+        .skill-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #888;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .pill-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pill {
+            background: rgba(0, 0, 0, 0.04);
+            padding: 4px 12px;
+            border-radius: 50px; /* 胶囊形状 */
+            font-size: 0.85rem;
+            color: #444;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .pill:hover {
+            background: #fff;
+            border-color: #0055CC;
+            color: #0055CC;
+        }
+
+        /* 证书部分的紧凑列表 */
+        .cert-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .cert-name { flex: 1; color: #333; }
+        .cert-org { color: #888; margin-left: 10px; font-style: italic; }
+        .cert-date { color: #aaa; width: 100px; text-align: right; font-family: monospace; }
+.engagement-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .engagement-type {
+            flex: 0 0 100px; /* 固定宽度让右侧对齐 */
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #0055CC; /* 使用你的主题蓝色 */
+            font-weight: bold;
+            padding-top: 3px;
+        }
+
+        .engagement-content {
+            color: #333;
+        }
+
+        .engagement-content b {
+            color: #111;
+        }
+
+        .engagement-year {
+            color: #aaa;
+            font-family: monospace;
+            margin-left: auto; /* 将年份推向最右侧 */
+            padding-left: 15px;
+        }
+        a { color: #0055CC; text-decoration: none; font-weight: 500; }
+        a:hover { text-decoration: underline; }
+
+
+
+
+        /* 遮罩层背景 */
+#image-viewer {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9); /* 半透明黑 */
+    cursor: zoom-out;
+}
+
+/* 弹出后的图片 */
+#full-image {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* 给你的 project-figure 图片增加一个放大镜手势 */
+.project-figure img {
+    cursor: zoom-in;
+}
+
+        /* --- 移动端适配 (手机查看效果) --- */
+        @media (max-width: 850px) {
+            body { flex-direction: column; }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 30px 20px;
+                border-right: none;
+                border-bottom: 1px solid #eee;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 10px;
+            }
+            .nav-links { flex-direction: row; gap: 15px; }
+            .content { margin-left: 0; padding: 40px 25px; width: auto; }
+            .profile-container { flex-direction: column-reverse; align-items: center; text-align: left; }
+            .profile-image-container { justify-content: center; width: 100%; }
+            .profile-image { width: 200px; height: 200px; }
+        }
+
+
+
+    </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div>
-        <h1>TJ</h1>
-        <div class="tag">Extreme Climate Hazards &amp; Risk · Science-to-Decision Translation</div>
+
+    <nav class="sidebar">
+        <div class="nav-name">
+            <span class="en-name">Tianjiao Pu</span>
+            <span class="cn-name">濮天娇</span>
+        </div>
+        <div class="nav-links">
+          
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <!-- <a href="#work">Projects</a> -->
+            <a href="#projects">Selected Projects</a>
+            <a href="#engagement">Academic Engagement</a>
+            <a href="#presentations"> Selected Presentations</a>
+            <a href="#teaching"> Teaching Experience</a>
+            <a href="#skills-training"> Skills</a>
+
+            
+
+        </div>
+        <div class="sidebar-footer">
+          <a href="https://scholar.google.com/citations?user=OGFBEx0AAAAJ&hl=en" target="_blank">Scholar</a>
+          <a href="https://orcid.org/0009-0008-4850-9160" target="_blank">ORCID</a>
+          <a href="https://www.linkedin.com/in/tianjiao-pu-713948173" target="_blank">LinkedIn</a>
+          <a href="https://environment.princeton.edu/people/tianjiao-pu/" target="_blank">Affiliation</a>
+          <!-- <a href="你的Github链接" target="_blank">GitHub</a> -->
+           
+        <div style="width: 100%; margin-top: 10px; font-size: 0.85rem; color: #bbb; letter-spacing: 0.5px;">
+            © 2026 Tianjiao Pu
+          </div>
+</div>
+    </nav>
+
+    <main class="content">
+        
+        <section id="about" class="profile-container">
+            <div class="profile-text">
+              <h2>About Me</h2>
+                <p>Hello! I'm TJ.</p>
+                <p>I completed my Ph.D. with Prof. Cynthia Gerlein-Safdi at <a href="https://sites.google.com/berkeley.edu/gerlein-safdi/" target="_blank">UC Berkeley</a> (2024).</p>
+                <p>Currently a Postdoctoral Researcher with Prof. Gabriele Villarini at <a href="https://villarini.scholar.princeton.edu/" target="_blank">Princeton University</a>.</p>
+                <p>I work at the intersection of <b>nature and computer vision</b>, bridging physical understanding and data-driven intelligence.</p>
+                <p>My research integrates remote sensing, physics-based modeling, and machine learning to quantify climate hazards and translate complex environmental processes into decision-relevant insights.</p>
+                <p>I focus on high-impact hazards including extreme flooding, wildfires, and hailstorms, and I develop scalable algorithms and tools at global and large-regional scales to <b> accelerate the translation of scientific discovery into real-world applications.</b></p>
+                <p style="font-style: italic;">Outside of research, I find my rhythm in rap, dance and vibe coding.</p>
+            </div>
+            <div class="profile-image-container">
+                <img src="profile.jpg" alt="Tianjiao Pu" class="profile-image">
+            </div>
+        </section>
+
+        <!-- <section id="news" style="margin-top: 50px;">
+          <h2>News</h2>
+          
+          <div class="news-item">
+              <span class="news-date">2026.01</span>
+              <div class="news-content">Started my postdoctoral research at <b>Princeton University</b>.</div>
+          </div>
+
+          <div class="news-item">
+              <span class="news-date">2024.12</span>
+              <div class="news-content">Our paper on wetland dynamics was accepted to <b>Remote Sensing of Environment</b>.</div>
+          </div>
+
+          <div class="news-item">
+              <span class="news-date">2024.08</span>
+              <div class="news-content">Successfully defended my Ph.D. dissertation at <b>UC Berkeley</b>!</div>
+          </div>
+      </section> -->
+
+        <section id="education">
+            <h2>Education</h2>
+            <table class="edu-table">
+                <tr>
+                    <td class="degree">Ph.D.</td>
+                    <td>University of California, Berkeley</td>
+                    <td> Civil and Environmental Engineering</td>
+                    <td class="year">2024</td>
+                </tr>
+                <tr>
+                    <td class="degree">M.Sc.</td>
+                    <td>University of California, Berkeley</td>
+                    <td> Civil and Environmental Engineering</td>
+                    <td class="year">2019</td>
+                </tr>
+                <tr>
+                    <td class="degree">B.Sc.</td>
+                    <td>University of Illinois Urbana-Champaign</td>
+                    <td>Civil and Environmental Engineering</td>
+                    <td class="year">2018</td>
+                </tr>
+            </table>
+                <p style="margin-top: 30px; font-style: italic; color: #555; font-size: 0.95rem;">
+                    I was born and raised in Wuxi, China, on the shores of <a href="https://en.wikipedia.org/wiki/Lake_Tai" target="_blank">Tai Lake</a> (a critical freshwater lake in the Yangtze River Delta), with the <a href="https://en.wikipedia.org/wiki/Grand_Canal_(China)" target="_blank">Grand Canal</a> (the world’s longest ancient artificial waterway) running through the city — both inspired my pursuit of environmental engineering.
+                </p>
+
+                <p style="margin-top: 0px; font-style: italic; color: #555; font-size: 0.95rem; line-height: 1.6;">
+                  My technical foundation is shaped by a Minor in Computer Science from UIUC and by Minor Fields in Earth and Planetary Science and Computer Science during my Ph.D. at Berkeley, providing the analytical tools to decode complex natural processes through a computational lens.
+                </p>
+        </section>       
+</div>
+<section id="projects" style="margin-top: 60px;">
+    <h2>Selected Projects</h2>
+    <div class="project-item">
+      <div class="project-figure" style=" overflow: hidden; border-radius: 12px;">
+        <img src="https://agupubs.onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1029%2F2024WR037060&file=2024WR037060-sup-0002-Movie+SI-S01.gif"
+            alt="Wetland Dynamics"
+            style="width: 180%; 
+                    height: 120%; 
+                    object-fit: cover; 
+                    object-position: 35%;
+                    transform: translate(-1%, -5%);"> 
       </div>
-      <nav aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#publications">Publications</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+        <div class="project-info">
 
-    <section id="about" class="card">
-      <h2>About</h2>
-      <p>
-        I earned my Ph.D. at <strong>UC Berkeley</strong> (2024) with Prof. Cynthia Gerlein-Safdi and am currently a
-        <strong>Postdoctoral Researcher</strong> at <strong>Princeton University</strong> with Prof. Gabriele Villarini.
-        I work at the intersection of <strong>hydrology</strong> and <strong>computer vision</strong>.
-      </p>
-      <p>
-        I was born and raised in Wuxi, China, on the shores of <a href="https://whc.unesco.org/en/tentativelists/5460/" target="_blank" rel="noopener">Tai Lake</a>
-        (<span class="muted">major freshwater lake in the Yangtze River Delta</span>), with the
-        <a href="https://whc.unesco.org/en/list/1443/" target="_blank" rel="noopener">Grand Canal</a>
-        (<span class="muted">UNESCO-listed ancient waterway</span>) running through the city—both inspiring my pursuit of environmental engineering.
-      </p>
-    </section>
+            <h3>Berkeley-RWAWC：Wetland Dynamics Mapping via CV</h3>
+            <p class="project-description">
+                Developed computer vision framework for tropical and subtropical surface water mapping with CYGNSS, 
+                overcame the limitations of traditional optical remote sensing under persistent cloud cover.
+                Delivered the first official water mask product to the CYGNSS Science Team. 
+                The dataset is hosted at <a href="https://podaac.jpl.nasa.gov/" target="_blank"> NASA PO.DAAC </a>.
+            </p>
+             <div class="project-links" style="margin-bottom: 15px; display: flex; gap: 15px;">
+                <a href=" https://doi.org/10.1029/2024WR037060" target="_blank" style="font-size: 0.95rem; color: #0055CC; text-decoration: none; border-bottom: 1px solid transparent;" onmouseover="this.style.borderBottom='1px solid #0055CC'" onmouseout="this.style.borderBottom='1px solid transparent'">[Paper]</a>
+                <a href="https://podaac.jpl.nasa.gov/dataset/CYGNSS_L3_UC_BERKELEY_WATERMASK_V3.1" target="_blank" style=" font-size: 0.95rem;color: #0055CC; text-decoration: none; border-bottom: 1px solid transparent;" onmouseover="this.style.borderBottom='1px solid #0055CC'" onmouseout="this.style.borderBottom='1px solid transparent'">[Science Product]</a>
+                <a href="https://podaac.jpl.nasa.gov/dataset/CYGNSS_L3_UC_BERKELEY_WATERMASK_DAILY_V3.2" target="_blank" style=" font-size: 0.95rem;color: #0055CC; text-decoration: none; border-bottom: 1px solid transparent;" onmouseover="this.style.borderBottom='1px solid #0055CC'" onmouseout="this.style.borderBottom='1px solid transparent'">[Operational Product]</a>
+              </div>
+            <p>   
+              <div style="font-size: 0.85rem; color: #888; margin-bottom: 15px;">
+                  Featured in: 
+                  <a href="https://engineering.berkeley.edu/news/2024/07/new-computer-vision-based-system-monitors-seasonal-dynamics-of-tropical-water/" target="_blank" style="color: #666; text-decoration: underline; text-underline-offset: 2px;">UC Berkeley News</a>, 
+                  <a href="https://engineering.berkeley.edu/news/2024/11/on-the-map/" target="_blank" style="color: #666; text-decoration: underline; text-underline-offset: 2px;">Berkeley Engineer magazine</a>,
+                  <a href="https://podaac.jpl.nasa.gov/announcements/2024-09-05-CYGNSS-L3-MRG-V3.2.1-MRG-NRT-V3.2.1-and-Daily-Watermask-V3.2-Datasets-Release" target="_blank" style="color: #666; text-decoration: underline; text-underline-offset: 2px;">NASA PO.DAAC</a>
+              </div>
+            </p>
+            <div class="project-tags" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;">
+                <span class="tag">Computer Vision</span>
+                <span class="tag">Random Walk</span>
+                <span class="tag">GNSS-R</span>
+                <span class="tag">Hydrology</span>
+                <span class="tag">Remote Sensing</span>
+            </div>
+        </div>
+        </div>
 
-    <section id="research" class="card">
-      <h2>Research Focus</h2>
-      <p>
-        My research integrates <strong>remote sensing</strong>, <strong>modeling</strong>, and <strong>data-driven methods</strong> to translate complex environmental processes into decision-relevant insights.
-        I focus on high-impact hazards including <strong>extreme flooding</strong>, <strong>wildfires</strong>, and <strong>hailstorms</strong>, and develop scalable algorithms and tools at global and large-regional scales.
-      </p>
-      <div>
-        <span class="pill">Flood risk &amp; extremes</span>
-        <span class="pill">Remote sensing</span>
-        <span class="pill">Computer vision</span>
-        <span class="pill">Science-to-decision</span>
-      </div>
-    </section>
+    <!-- <div class="project-item">
+        <div class="project-figure">
+            <img src="your-project-image-2.jpg" alt="Flood Mapping">
+        </div>
+        <div class="project-info">
+            <h3>Near Real-time Flood Mapping</h3>
+            <p class="project-description">
+                An automated pipeline for flood extent extraction using SAR and optical data fusion, optimizing disaster response efficiency in the Yangtze River Delta.
+            </p>
 
-    <div class="grid">
-      <section id="publications" class="card">
-        <h2>Publications</h2>
-        <p class="muted">Add links to Google Scholar / ORCID / papers here.</p>
-        <ul>
-          <li><a href="#" onclick="return false;">Google Scholar (add link)</a></li>
-          <li><a href="#" onclick="return false;">ORCID (add link)</a></li>
-          <li><a href="#" onclick="return false;">CV PDF (add link)</a></li>
-        </ul>
-      </section>
 
-      <section id="contact" class="card">
-        <h2>Contact</h2>
-        <p class="muted">Add your preferred contact links.</p>
-        <ul>
-          <li>Email: <a href="#" onclick="return false;">(add)</a></li>
-          <li>GitHub: <a href="#" onclick="return false;">(add)</a></li>
-          <li>LinkedIn: <a href="#" onclick="return false;">(add)</a></li>
-        </ul>
-      </section>
+                <div style="margin-bottom: 10px;">
+        <a href="#" class="project-link">[Paper]</a>
+        <a href="#" class="project-link">[Code]</a>
     </div>
 
-    <footer>
-      © <span id="y"></span> TJ · Built with GitHub Pages
-    </footer>
-  </div>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+    <div style="font-size: 0.85rem; color: #888; margin-bottom: 15px;">
+        Featured in: 
+        <a href="link1" target="_blank" style="color: #666; text-decoration: underline; text-underline-offset: 2px;">UC Berkeley News</a>, 
+        <a href="link2" target="_blank" style="color: #666; text-decoration: underline; text-underline-offset: 2px;">Earth Magazine</a>
+    </div>
+
+               <div class="project-tags">
+                <span class="tag">SAR</span>
+                <span class="tag">Data Fusion</span>
+                <span class="tag">U-Net</span>
+            </div>
+        </div>
+    </div> -->
+</section>
+
+<!-- <div class="project-info">
+    <h3>Wetland Dynamics Analysis via CV</h3>
+    <p class="project-description">
+        Developed a deep learning framework to segment and track multi-decadal wetland changes using high-resolution satellite imagery. 
+    </p>
+    
+    <div class="project-links" style="margin-bottom: 15px; display: flex; gap: 15px;">
+        <a href="你的论文链接" target="_blank" style="font-size: 0.85rem; color: #0055CC; text-decoration: none; border-bottom: 1px solid transparent;" onmouseover="this.style.borderBottom='1px solid #0055CC'" onmouseout="this.style.borderBottom='1px solid transparent'">[Paper]</a>
+        <a href="你的代码链接" target="_blank" style="font-size: 0.85rem; color: #0055CC; text-decoration: none; border-bottom: 1px solid transparent;" onmouseover="this.style.borderBottom='1px solid #0055CC'" onmouseout="this.style.borderBottom='1px solid transparent'">[Code]</a>
+        <a href="你的新闻链接" target="_blank" style="font-size: 0.85rem; color: #0055CC; text-decoration: none; border-bottom: 1px solid transparent;" onmouseover="this.style.borderBottom='1px solid #0055CC'" onmouseout="this.style.borderBottom='1px solid transparent'">[News]</a>
+    </div>
+
+    <div class="project-tags">
+        <span class="tag">PyTorch</span>
+        <span class="tag">Remote Sensing</span>
+    </div>
+</div> -->
+
+<section id="engagement" style="margin-top: 60px;">
+    <h2>Academic Engagement</h2>
+
+    <div class="engagement-item">
+        <span class="engagement-type">Invited Talk</span>
+        <div class="engagement-content">
+            Session Talk, <b>AGU Fall Meeting</b>, Session H21H: Remote Sensing of Rivers, Lakes, Reservoirs, and Wetlands
+        </div>
+        <span class="engagement-year">2025</span>
+    </div>
+
+    <div class="engagement-item">
+        <span class="engagement-type">Service</span>
+        <div class="engagement-content">
+            Co-chair, <b>IEEE IGARSS</b> Community Contributed Theme CCT.31: Microwave-based water monitoring
+        </div>
+        <span class="engagement-year">2026</span>
+    </div>
+
+    <div class="engagement-item">
+        <span class="engagement-type">Service</span>
+        <div class="engagement-content">
+            Organization Committee, <b>IEEE GRSS MAMI WATA Workshop</b>
+        </div>
+        <span class="engagement-year">2025</span>
+    </div>
+
+    <div class="engagement-item">
+        <span class="engagement-type">Forum</span>
+        <div class="engagement-content">
+            1,000 Scientist AI Jam, 
+            <a href="https://openai.com/global-affairs/1000-scientist-ai-jam-session/" target="_blank" 
+            style= "font-weight: bold;">U.S. Dept. of Energy (DOE) & OpenAI</a>
+        </div>
+        <span class="engagement-year">2025</span>
+    </div>
+
+    <div class="engagement-item">
+        <span class="engagement-type">Advisory</span>
+        <div class="engagement-content">
+            Review Panel, <b>NASA Earth Science Division</b>
+        </div>
+        <span class="engagement-year">2024</span>
+    </div>
+
+    
+</section>
+<section id="presentations" style="margin-top: 60px; max-width: 1000px;">
+    <h2 style="border-bottom: 2px solid #f0f0f0; padding-bottom: 10px; margin-bottom: 20px;">Selected Presentations</h2>
+    <div style="font-size: 0.85rem; color: #888; margin-bottom: 25px; font-style: italic; background: #fafafa; padding: 10px; border-radius: 4px; border-left: 3px solid #ddd;">
+        Note: Oral unless specified. Presented by collaborator*
+    </div>
+
+    <div class="pres-container">
+        <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2025 AGU Fall</span>New Orleans, LA</div>
+            <div class="pres-content">
+                <span class="pres-title">Daily CYGNSS Water Maps Reveal Inland Water Hot Spots and Hot Moments, from Wetlands to Floodplains <span class="status-badge badge-invited">Invited</span></span>
+                <hr style="border: 0; border-top: 1px dashed #eee; margin: 15px 0;">
+                <span class="pres-title">Meter-Scale Hail Detection from Space <span class="status-badge badge-poster">Poster</span></span>
+                <hr style="border: 0; border-top: 1px dashed #eee; margin: 15px 0;">
+                <span class="pres-title">High-Resolution Flood Inundation Mapping of U.S. Tribal Nations Under Current and Future Conditions: The Case of the Santee Sioux Nation <span class="status-badge badge-poster">Poster</span></span>
+                <span class="pres-location">American Geophysical Union Fall Meeting</span>
+            </div>
+        </div>
+
+        <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2025 MAMI WATA</span>Rome, Italy and Online</div>
+            <div class="pres-content">
+                <span class="pres-title">Daily CYGNSS WaterMask Reveals Hydrologic Hot Moments and Dynamic Wetland Variability</span>
+                <span class="pres-location">IEEE GRSS Workshop at Sapienza University of Rome</span>
+            </div>
+        </div>
+
+        <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2025 CYGNSS STM</span>Miami, FL</div>
+            <div class="pres-content">
+                <span class="pres-title">Mission Status and Ocean Wind Data Products - Water Mask Product Update</span>
+                <span class="pres-location">CYGNSS Science Team Meeting</span>
+            </div>
+        </div>
+
+        <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2024 AGU Fall</span>Washington, D.C.</div>
+            <div class="pres-content">
+                <span class="pres-title">Deciphering the Interplay Between Fire Regimes and Wetland Refill Dynamics in the Pantanal: Implications of Climate Variability and Fire Behavior <span class="status-badge badge-poster">Poster</span></span>
+                <span class="pres-location">American Geophysical Union Fall Meeting</span>
+            </div>
+        </div>
+
+        <!-- <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2024 ICEAA-IEEE</span>Lisbon, Portugal</div>
+            <div class="pres-content">
+                <span class="pres-title">Advancing Hydrological Insights: Daily Surface Water Dynamics through CYGNSS Data in Tropical Wetlands*</span>
+                <span class="pres-location">International Conference on Electromagnetics in Advanced Applications</span>
+            </div>
+        </div> -->
+
+        <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2024 WaterSciCon</span>St. Paul, MN</div>
+            <div class="pres-content">
+                <span class="pres-title"> Evaluating the Interplay Between Wildfires and Wetland Resilience Through 
+                  GNSS-R-derived Inundation Monitoring in Tropical Ecosystems <span class="status-badge badge-poster">Poster</span></span>
+                <span class="pres-location">The Water Science Conference</span>
+            </div>
+        </div>
+
+        <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2024 CYGNSS STM</span>Ann Arbor, MI</div>
+            <div class="pres-content">
+                <span class="pres-title"> The Berkeley-RWAWC Watermask Product and Ongoing Efforts Towards a CYGNSS-Based Flood Warning System*</span>
+                <span class="pres-location">CYGNSS Science Team Meeting</span>
+            </div>
+        </div>
+
+
+
+        <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2024 AGU Chapman</span> Honolulu, HI</div>
+            <div class="pres-content">
+                <span class="pres-title"> From Flames to Floods: A CYGNSS-Based Study Assessing the Interplay Between Wildfires and Wetland Resilience in the Tropics
+                <span class="status-badge badge-poster">Poster</span></span>
+                <hr style="border: 0; border-top: 1px dashed #eee; margin: 15px 0;">
+                <span class="pres-title"> Beneath the sea of clouds: a new CYGNSS-based monthly watermask product uncovers the hidden seasonality of tropical waterbodies*
+                <span class="status-badge badge-poster">Poster</span></span>
+                <span class="pres-location">American Geophysical Union Chapman Conference - Remote Sensing of the Water Cycle: Sensors to Science to Society</span>
+            </div>
+        </div>
+
+        <details>
+            <summary>View Earlier Presentations (2019–2023)</summary>
+
+        <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2023 AGU Fall</span>San Francisco, CA</div>
+            <div class="pres-content">
+                <span class="pres-title">Unprecedented Wildfires and Wetland Resilience: A Remote Sensing-based Analysis of the Dynamic Interplay Between Changing Fire Behavior and Wetland Refill Pattern in the Pantanal</span>
+                <hr style="border: 0; border-top: 1px dashed #eee; margin: 15px 0;">
+                <span class="pres-title">Beneath the sea of clouds: a new CYGNSS-based monthly watermask product uncovers the hidden seasonality of tropical waterbodies*</span>
+
+                <span class="pres-location">American Geophysical Union Fall Meeting</span>
+            </div>
+        </div>
+
+        <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2023 MAMI WATA</span>Pasadena, CA</div>
+            <div class="pres-content">
+                <span class="pres-title">Revolutionizing tropical wetland monitoring with GNSS-R: Introducing Berkeley-RWAWC, UC Berkeley's Random Walk Algorithm WaterMask from CYGNSS</span>
+                <span class="pres-location">IEEE GRSS MAMI WATA Workshop at Caltech</span>
+            </div>
+        </div>
+
+        <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2023 IGARSS</span>Pasadena, CA</div>
+            <div class="pres-content">
+                <span class="pres-title">Mapping Urban Flooding with CYGNSS and Computer Vision: A Florida Case Study</span>
+                <hr style="border: 0; border-top: 1px dashed #eee; margin: 15px 0;">
+                <span class="pres-title"> Coupling CYGNSS and DEM Data For High Spatio-Temporal Mapping of Inundation*</span>
+                <span class="pres-location">IEEE International Geoscience and Remote Sensing Symposium</span>
+            </div>
+        </div>
+
+        <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2023 IEEE GNSS+R</span>Boulder, CO</div>
+            <div class="pres-content">
+                <span class="pres-title">Integrating CYGNSS and DEM Data with Computer Vision Algorithm, RawIF-based Validation for High Spatio-temporal Mapping of Inundation</span>
+                <span class="pres-location">IEEE GNSS+R Specialist Meeting on Reflectometry using GNSS and other Signals of Opportunity</span>
+            </div>
+        </div>
+
+                <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2023 CYGNSS STM</span>Online</div>
+            <div class="pres-content">
+                <span class="pres-title"> Continental-Scale Mapping of Waterbodies Using Raw IF Tracks for Validation: An Update</span>
+                <span class="pres-location">CYGNSS Science Team Meeting</span>
+            </div>
+        </div>
+
+        <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2022 AGU Fall</span>Chicago, IL</div>
+            <div class="pres-content">
+                <span class="pres-title">Coupling CYGNSS and Digital Elevation Data for High Spatio-temporal Mapping of Inundation</span>
+                <span class="pres-location">American Geophysical Union Fall Meeting</span>
+            </div>
+        </div>
+
+                       <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2022 CYGNSS STM</span>Ann Arbor, MI</div>
+            <div class="pres-content">
+                <span class="pres-title"> Water Masks for Modeling Methane Emissions</span>
+                <span class="pres-location">CYGNSS Science Team Meeting</span>
+            </div>
+        </div>
+
+        <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2022 FIHM</span>San Juan, PR</div>
+            <div class="pres-content">
+                <span class="pres-title">Using CYGNSS for High Spatio-temporal Mapping of Inundation at the Global Scale</span>
+                <span class="pres-location">Frontiers in Hydrology Meeting</span>
+            </div>
+        </div>
+        <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2022 EFMH</span>Berkeley, CA</div>
+            <div class="pres-content">
+                <span class="pres-title">Yangtze River Flood Management and Assessment of Extreme Hydrological Events in Poyang Lake</span>
+                <span class="pres-location">Environmental Fluid Mechanics and Hydrology Group Meeting</span>
+            </div>
+        </div>
+        <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2020 AGU Fall</span>Online</div>
+            <div class="pres-content">
+                <span class="pres-title">Characterization of Nitrogen Hot Spots and Hot Moments in a Flood Plain Using Numerical Modeling <span class="status-badge badge-poster">Poster</span></span>
+                <span class="pres-location">American Geophysical Union Fall Meeting</span>
+            </div>
+        </div>
+
+        <div class="pres-row">
+            <div class="pres-meta"><span class="pres-venue-tag">2019 AGU Fall</span>San Francisco, CA</div>
+            <div class="pres-content">
+                <span class="pres-title">A Review and Evaluation of Analytical Solutions for Steady-state Tunnel Inflow Using Numerical Modeling <span class="status-badge badge-poster">Poster</span></span>
+                <span class="pres-location">American Geophysical Union Fall Meeting</span>
+            </div>
+        </div>
+        </details>
+    </div>
+</section>
+
+<section id="teaching" style="margin-top: 60px;">
+    <h2>Teaching Experience</h2>
+
+    <span class="teaching-role">Guest Lecture @ UC Berkeley</span>
+    
+    <div class="teaching-item">
+        <span class="teaching-year">2023 SP</span>
+        <span class="course-id">CIV ENG 203N</span>
+        <span class="course-name">Surface Water Hydrology – <i>Topic: Atmospheric Circulation</i></span>
+    </div>
+
+    <span class="teaching-role">Graduate Student Instructor @ UC Berkeley</span>
+
+    <div class="teaching-item">
+        <span class="teaching-year">2024 SP</span>
+        <span class="course-id">CIV ENG 203N</span>
+        <span class="course-name">Surface Water Hydrology</span>
+    </div>
+
+    <div class="teaching-item">
+        <span class="teaching-year">2022 SP</span>
+        <span class="course-id">PHYSICS 7A</span>
+        <span class="course-name">Physics for Scientists and Engineers</span>
+    </div>
+
+    <div class="teaching-item">
+        <span class="teaching-year">2021 FA</span>
+        <span class="course-id">PHYSICS 7A</span>
+        <span class="course-name">Physics for Scientists and Engineers</span>
+    </div>
+
+    <div class="teaching-item">
+        <span class="teaching-year">2021 SU</span>
+        <span class="course-id">PHYSICS 7A</span>
+        <span class="course-name">Physics for Scientists and Engineers</span>
+    </div>
+
+    <div class="teaching-item">
+        <span class="teaching-year">2021 SP</span>
+        <span class="course-id">CIV ENG 202A</span>
+        <span class="course-name">Vadose Zone Hydrology</span>
+    </div>
+</section>
+
+<section id="skills-training" style="margin-top: 60px;">
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px;">
+        
+        <div>
+            <h2>Certifications & Training</h2>
+            
+            <div class="cert-item">
+                <span class="cert-name"><b>Software Engineering Summer School</b></span>
+                <span class="cert-date">2025.06</span>
+            </div>
+            <div style="font-size: 0.8rem; color: #999; margin-bottom: 12px;">Princeton University,  and the Research Software Engineering Group</div>
+
+            <div class="cert-item">
+                <span class="cert-name"><b>Princeton Open Hackathon (NVIDIA)</b></span>
+                <span class="cert-date">2025.06</span>
+
+            </div>
+              <div style="font-size: 0.8rem; color: #999; margin-bottom: 12px;"> NVIDIA, OpenACC Organization and Princeton University</div>
+            <div class="cert-item">
+                <span class="cert-name"><b>Sustainability Learning Cohort</b></span>
+                <span class="cert-date">2025.04</span>
+            </div>
+            <div style="font-size: 0.8rem; color: #999; margin-bottom: 12px;">  Princeton Graduate School’s GradFUTURES program and the Office of Sustainability</div>
+
+            <div class="cert-item">
+                <span class="cert-name"><b>Parallel Programming & GPU Bootcamp</b></span>
+                <span class="cert-date">2024.10</span>
+                
+            </div>
+            <div style="font-size: 0.8rem; color: #999; margin-bottom: 12px;"> Princeton Institute for Computational Science and Engineering (PICSciE) and Research Computing</div>
+
+            <div class="cert-item">
+                <span class="cert-name"><b>TOUGHREACT Short Course for Scientists and Engineers</b></span>
+                <span class="cert-date">2022.02</span>
+                
+            </div>
+            <div style="font-size: 0.8rem; color: #999; margin-bottom: 12px;">Lawrence Berkeley National Laboratory (LBNL) Energy Geosciences Division</div>
+
+            <div class="cert-item">
+                <span class="cert-name"><b>Engineer-in-Training (EIT)</b></span>
+                <span class="cert-date">2021.10</span>
+            </div>
+            <div style="font-size: 0.8rem; color: #999;">California Board for Professional Engineers, Land Surveyors, and Geologists</div>
+
+            <div class="cert-item">
+                <span class="cert-name"><b>Computational Science and Engineering Certification for Civil Engineering</b></span>
+                <span class="cert-date">2018.05</span>
+            </div>
+            <div style="font-size: 0.8rem; color: #999;"> University of Illinois Urbana-Champaign</div>
+       </div>
+
+        <div>
+            <h2>Technical Expertise</h2>
+            
+            <div class="skill-group">
+                <span class="skill-title">Programming</span>
+                <div class="pill-container">
+                    <span class="pill">Python</span><span class="pill">R</span>
+                    <span class="pill">MATLAB</span><span class="pill">C++</span>
+                    <span class="pill">Java</span>
+                    <span class="pill">JavaScript</span><span class="pill">C#</span>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <span class="skill-title">High-Performance Computing (HPC)</span>
+                <div class="pill-container">
+                    <span class="pill">Princeton Tiger3 & Della Clusters</span>
+                    <span class="pill">Berkeley Savio Clusters</span>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <span class="skill-title">Graphics & VR</span>
+                <div class="pill-container">
+                    <span class="pill">WebGL</span><span class="pill">Unity</span>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <span class="skill-title">Engineering Tools</span>
+                <div class="pill-container">
+                    <span class="pill">ArcGIS</span><span class="pill">TRITON</span>
+                    <span class="pill">ToughReact</span>
+                    <span class="pill">CrunchFlow</span><span class="pill">ModelMuse</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+        <!-- <section id="work">
+            <h2>Work Experience</h2>
+            <p><b>Postdoctoral Researcher</b> | Princeton University (2024 - Present)</p>
+            <p>Research on climate hazards, remote sensing applications, and machine learning models for environmental resilience.</p>
+        </section> -->
+
+    </main>
+
+
+
+<div id="image-viewer">
+        <img id="full-image" src="">
+    </div>
+
+    <script>
+        const viewer = document.getElementById('image-viewer');
+        const fullImg = document.getElementById('full-image');
+        const projectImgs = document.querySelectorAll('.project-figure img');
+
+        projectImgs.forEach(img => {
+            img.onclick = function() {
+                viewer.style.display = 'block';
+                fullImg.src = this.src; 
+            }
+        });
+
+        viewer.onclick = function() {
+            viewer.style.display = 'none';
+        };
+    </script>
+
 </body>
 </html>
