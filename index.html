@@ -110,37 +110,56 @@
 }
 /* --- 新增：针对手机端的适配 --- */
 @media (max-width: 768px) {
+    /* 1. 让侧边栏回归成普通的页面头部 */
     .sidebar {
-        width: 100%;      /* 宽度撑满 */
-        height: auto;     /* 高度自适应内容 */
-        position: relative; /* 取消固定，让它排在页面最顶部 */
-        padding: 30px 20px;
+        width: 100%;
+        height: auto;
+        position: static;    /* 彻底取消固定，随页面滚动 */
+        padding: 40px 20px 20px 20px; /* 保持一定的顶部间距 */
         border-right: none;
-        border-bottom: 1px solid rgba(0,0,0,0.05); /* 改为底部分割线 */
-        gap: 20px;        /* 缩小间距 */
+        display: block;      /* 改为块级布局，让内容自然往下排 */
+        background: transparent;
     }
 
-    /* 让主内容区不再避让侧边栏 */
-    .main-content { 
-        margin-left: 0 !important; 
-        padding: 20px;
+    /* 2. 名字区域：保持左对齐 */
+    .nav-name {
+        margin-bottom: 25px;
     }
 
-    /* 手机端让按钮横向排列（可选，更省空间） */
+    /* 3. 导航链接：水平排列，像一串文字标签 */
     .nav-links {
-        flex-direction: row; 
+        flex-direction: row !important;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 15px;      /* 链接之间的间距 */
+        margin-bottom: 30px;
     }
 
     .nav-links a {
-        padding: 8px 12px;
-        font-size: 0.75rem;
+        padding: 0;     /* 取消按钮边框和内边距，回归纯文字感 */
+        font-size: 0.9rem;
+        border: none;
+        background: none;
     }
 
+    .nav-links a:hover {
+        background: none;
+        color: #0055CC;
+        padding-left: 0; /* 取消电脑端的位移效果 */
+    }
+
+    /* 4. 社交链接：同样水平排列 */
     .sidebar-footer {
         flex-direction: row;
-        align-items: center;
+        gap: 12px;
+        margin-top: 10px;
+        border-top: 1px solid #eee; /* 加一条细线区分内容，或者不加 */
+        padding-top: 20px;
+    }
+
+    /* 5. 关键：主内容区取消左边距，紧随其后 */
+    .main-content, .container {
+        margin-left: 0 !important;
+        padding: 0 20px 40px 20px; /* 左右间距与侧边栏对齐 */
     }
 }
 
