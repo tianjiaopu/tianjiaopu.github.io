@@ -108,6 +108,41 @@
     background: #eee;
     border-radius: 10px;
 }
+/* --- 新增：针对手机端的适配 --- */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;      /* 宽度撑满 */
+        height: auto;     /* 高度自适应内容 */
+        position: relative; /* 取消固定，让它排在页面最顶部 */
+        padding: 30px 20px;
+        border-right: none;
+        border-bottom: 1px solid rgba(0,0,0,0.05); /* 改为底部分割线 */
+        gap: 20px;        /* 缩小间距 */
+    }
+
+    /* 让主内容区不再避让侧边栏 */
+    .main-content { 
+        margin-left: 0 !important; 
+        padding: 20px;
+    }
+
+    /* 手机端让按钮横向排列（可选，更省空间） */
+    .nav-links {
+        flex-direction: row; 
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .nav-links a {
+        padding: 8px 12px;
+        font-size: 0.75rem;
+    }
+
+    .sidebar-footer {
+        flex-direction: row;
+        align-items: center;
+    }
+}
 
                                 /* 侧边栏底部社交链接 */
         .sidebar-footer {
