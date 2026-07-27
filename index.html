@@ -6,6 +6,78 @@
     <title>Tianjiao Pu | Home Page</title>
     <style>
 
+    /* Expandable events under Academic Engagement */
+.engagement-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.engagement-events {
+    margin-top: 5px;
+}
+
+/* Override the website's general summary styling */
+.engagement-events summary {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-align: left;
+    list-style: none;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.1px;
+    color: #888;
+    cursor: pointer;
+}
+
+/* Hide the browser's default disclosure triangle */
+.engagement-events summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Subtle expand/collapse indicator */
+.engagement-events summary::after {
+    content: " +";
+    color: #aaa;
+}
+
+.engagement-events[open] summary::after {
+    content: " −";
+}
+
+/* Only become prominent when the user interacts with it */
+.engagement-events summary:hover {
+    color: #0055CC;
+}
+
+.engagement-events summary:hover::after {
+    color: #0055CC;
+}
+
+.engagement-events summary:focus-visible {
+    color: #0055CC;
+    outline: 1px dotted #0055CC;
+    outline-offset: 3px;
+}
+
+/* Expanded event list */
+.engagement-events ul {
+    margin: 7px 0 0 18px;
+    padding: 0;
+    color: #555;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.engagement-events li {
+    margin: 3px 0;
+}
+
+.engagement-events li a {
+    font-weight: 400;
+}
+
     /* 遮罩层背景 */
     #image-viewer {
         display: none;
@@ -952,7 +1024,7 @@ display: block;
                 The dataset is hosted at <a href="https://podaac.jpl.nasa.gov/" target="_blank"> NASA PO.DAAC </a>.
             </p>
              <div class="project-links" style="margin-bottom: 15px; display: flex; gap: 15px;">
-                <a href=" https://doi.org/10.1029/2024WR037060" target="_blank" style="font-size: 0.95rem; color: #0055CC; text-decoration: none; border-bottom: 1px solid transparent;" onmouseover="this.style.borderBottom='1px solid #0055CC'" onmouseout="this.style.borderBottom='1px solid transparent'">[Paper]</a>
+                <a href=" https://doi.org/10.1029/2024WR037060" target="_blank" style="font-size: 0.95rem; color: #0055CC; text-decoration: none; border-bottom: 1px solid transparent;" onmouseover="this.style.borderBottom='1px solid #0055CC'" onmouseout="this.style.borderBottom='1px solid transparent'">[Paper (Water Resources Research)]</a>
                 <a href="https://podaac.jpl.nasa.gov/dataset/CYGNSS_L3_UC_BERKELEY_WATERMASK_V3.1" target="_blank" style=" font-size: 0.95rem;color: #0055CC; text-decoration: none; border-bottom: 1px solid transparent;" onmouseover="this.style.borderBottom='1px solid #0055CC'" onmouseout="this.style.borderBottom='1px solid transparent'">[Science Product]</a>
                 <a href="https://podaac.jpl.nasa.gov/dataset/CYGNSS_L3_UC_BERKELEY_WATERMASK_DAILY_V3.2" target="_blank" style=" font-size: 0.95rem;color: #0055CC; text-decoration: none; border-bottom: 1px solid transparent;" onmouseover="this.style.borderBottom='1px solid #0055CC'" onmouseout="this.style.borderBottom='1px solid transparent'">[Operational Product]</a>
               </div>
@@ -973,7 +1045,125 @@ display: block;
             </div>
         </div>
         </div>
+        
 
+            <div class="project-item">
+      <div class="project-figure" style=" overflow: hidden;img border-radius: 12px;">
+        <img src="fire_img.gif"
+            alt="Fire Dynamics"
+            style="width: 120%; 
+                    height: 120%; ire
+                    object-fit: cover; 
+                    object-position: 35%;
+                    transform: translate(-1%, -5%);"> 
+      </div>
+        <div class="project-info">
+
+            <h3>Berkely-FLARE：Tracking Fire-Regime Shifts from Space</h3>
+            <p class="project-description">
+                Developed an event-centric framework to reconstruct wildfire growth, persistence, merging, 
+                and cross-ecoregion spread across the Pantanal (world's largest tropical wetland) from 2001–2024, revealing that recent megafires 
+                are increasingly driven by post-ignition amplification rather than ignition frequency alone.
+                The algorithm and derived dataset is hosted at <a href="https://github.com/UC-Berkeley-Water-Carbon-Lab/FLARE" target="_blank"> UC-Berkeley-Water-Carbon-Lab Github </a> 
+                Inspired by the autonomous-driving data engines for scalable object tracking, event labeling and scene reconstruction.
+            </p>
+             <div class="project-links" style="margin-bottom: 15px; display: flex; gap: 15px;">
+                <a href=" https://www.researchsquare.com/article/rs-10069795/latest" target="_blank" style="font-size: 0.95rem; color: #0055CC; text-decoration: none; border-bottom: 1px solid transparent;" onmouseover="this.style.borderBottom='1px solid #0055CC'" onmouseout="this.style.borderBottom='1px solid transparent'">[Paper in review (Nature Communications)]</a>
+                <a href="https://github.com/UC-Berkeley-Water-Carbon-Lab/FLARE" target="_blank" style=" font-size: 0.95rem;color: #0055CC; text-decoration: none; border-bottom: 1px solid transparent;" onmouseover="this.style.borderBottom='1px solid #0055CC'" onmouseout="this.style.borderBottom='1px solid transparent'">[Algorithm & Product]</a>
+                <!-- <a href="https://podaac.jpl.nasa.gov/dataset/CYGNSS_L3_UC_BERKELEY_WATERMASK_DAILY_V3.2" target="_blank" style=" font-size: 0.95rem;color: #0055CC; text-decoration: none; border-bottom: 1px solid transparent;" onmouseover="this.style.borderBottom='1px solid #0055CC'" onmouseout="this.style.borderBottom='1px solid transparent'">[Product]</a> -->
+              </div>
+            <p>   
+              <!-- <div style="font-size: 0.85rem; color: #888; margin-bottom: 15px;">
+                  Featured in: 
+                  <a href="https://engineering.berkeley.edu/news/2024/07/new-computer-vision-based-system-monitors-seasonal-dynamics-of-tropical-water/" target="_blank" style="color: #666; text-decoration: underline; text-underline-offset: 2px;">UC Berkeley News</a>, 
+                  <a href="https://engineering.berkeley.edu/news/2024/11/on-the-map/" target="_blank" style="color: #666; text-decoration: underline; text-underline-offset: 2px;">Berkeley Engineer magazine</a>,
+                  <a href="https://podaac.jpl.nasa.gov/announcements/2024-09-05-CYGNSS-L3-MRG-V3.2.1-MRG-NRT-V3.2.1-and-Daily-Watermask-V3.2-Datasets-Release" target="_blank" style="color: #666; text-decoration: underline; text-underline-offset: 2px;">NASA PO.DAAC</a>
+              </div> -->
+            </p>
+            <div class="project-tags" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;">
+                <span class="tag">Computer Vision</span>
+                <span class="tag">Wildfire</span>
+                <span class="tag">Spatiotemporal Analysis</span>
+                <span class="tag">Remote Sensing</span>
+            </div>
+        </div>
+        </div>
+
+
+            <div class="project-item">
+      <div class="project-figure" style=" overflow: hidden;img border-radius: 12px;">
+        <img src="storm_img.png"
+            alt="storm"
+            style="width: 120%; 
+                    height: 120%; 
+                    object-fit: cover; 
+                    object-position: 35%;
+                    transform: translate(-1%, -5%);"> 
+      </div>
+        <div class="project-info">
+
+            <h3>Spaceborne Storm Intelligence </h3>
+            <p class="project-description">
+            <span style="font-size: 0.85rem; color: #888;">Coming soon</span>
+            </p>
+
+            <p>   
+              <!-- <div style="font-size: 0.85rem; color: #888; margin-bottom: 15px;">
+                  Featured in: 
+                  <a href="https://engineering.berkeley.edu/news/2024/07/new-computer-vision-based-system-monitors-seasonal-dynamics-of-tropical-water/" target="_blank" style="color: #666; text-decoration: underline; text-underline-offset: 2px;">UC Berkeley News</a>, 
+                  <a href="https://engineering.berkeley.edu/news/2024/11/on-the-map/" target="_blank" style="color: #666; text-decoration: underline; text-underline-offset: 2px;">Berkeley Engineer magazine</a>,
+                  <a href="https://podaac.jpl.nasa.gov/announcements/2024-09-05-CYGNSS-L3-MRG-V3.2.1-MRG-NRT-V3.2.1-and-Daily-Watermask-V3.2-Datasets-Release" target="_blank" style="color: #666; text-decoration: underline; text-underline-offset: 2px;">NASA PO.DAAC</a>
+              </div> -->
+            </p>
+<div class="project-tags" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;"> 
+    <span class="tag">Coming Soon</span> 
+    <span class="tag">Severe Storms</span> 
+    <span class="tag">Extreme Weather</span> 
+    <span class="tag">Remote Sensing</span> 
+</div>
+        </div>
+        </div>
+
+
+
+
+        
+
+    <div class="project-item">
+      <div class="project-figure" style=" overflow: hidden;img border-radius: 12px;">
+        <img src="flooding_img.png"
+            alt="flooding"
+            style="width: 120%; 
+                    height: 120%; 
+                    object-fit: cover; 
+                    object-position: 35%;
+                    transform: translate(-1%, -5%);"> 
+      </div>
+        <div class="project-info">
+
+            <h3>Attention-Guided Flood Modeling </h3>
+            <p class="project-description">
+            <span style="font-size: 0.85rem; color: #888;">Coming soon</span>
+            </p>
+
+            <p>   
+              <!-- <div style="font-size: 0.85rem; color: #888; margin-bottom: 15px;">
+                  Featured in: 
+                  <a href="https://engineering.berkeley.edu/news/2024/07/new-computer-vision-based-system-monitors-seasonal-dynamics-of-tropical-water/" target="_blank" style="color: #666; text-decoration: underline; text-underline-offset: 2px;">UC Berkeley News</a>, 
+                  <a href="https://engineering.berkeley.edu/news/2024/11/on-the-map/" target="_blank" style="color: #666; text-decoration: underline; text-underline-offset: 2px;">Berkeley Engineer magazine</a>,
+                  <a href="https://podaac.jpl.nasa.gov/announcements/2024-09-05-CYGNSS-L3-MRG-V3.2.1-MRG-NRT-V3.2.1-and-Daily-Watermask-V3.2-Datasets-Release" target="_blank" style="color: #666; text-decoration: underline; text-underline-offset: 2px;">NASA PO.DAAC</a>
+              </div> -->
+            </p>
+<div class="project-tags" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px;"> 
+    <span class="tag">Coming Soon</span> 
+    <span class="tag">Machine Learning</span>
+    <span class="tag">Attention Models</span>
+    <span class="tag">Flood Modeling</span>
+    <span class="tag">Terrain</span>
+    <span class="tag">Hydrology</span>
+   </div>
+        </div>
+        </div>
     <!-- <div class="project-item">
         <div class="project-figure">
             <img src="your-project-image-2.jpg" alt="Flood Mapping">
@@ -1034,15 +1224,39 @@ display: block;
         <span class="engagement-year">2025</span>
     </div>
 
-    <div class="engagement-item">
-        <span class="engagement-type">Service</span>
-        <div class="engagement-content">
-            Lead, <a href="https://www.grss-ieee.org/technical-committees/modeling-in-remote-sensing/" target="_blank" 
-            style= "font-weight: bold;">IEEE MIRS WAVES</a>, Working Group Water Applications via Electromagnetic Signatures
-        </div>
-        <span class="engagement-year">since 2026</span>
+  <div class="engagement-item">
+    <span class="engagement-type">Service</span>
+
+    <div class="engagement-content">
+        Lead,
+        <a
+            href="https://www.grss-ieee.org/technical-committees/modeling-in-remote-sensing/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="font-weight: bold;"
+        >
+            IEEE MIRS WAVES
+        </a>,
+        Working Group Water Applications via Electromagnetic Signatures
+
+        <details class="engagement-events">
+            <summary>Selected events &amp; webinars</summary>
+            <ul>
+                <li>
+                    <a
+                        href="https://www.grss-ieee.org/event/seeing-water-through-the-electromagnetic-spectrum/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Webinar: Seeing Water Through the Electromagnetic Spectrum
+                    </a>
+                </li>
+            </ul>
+        </details>
     </div>
 
+    <span class="engagement-year">since 2026</span>
+</div>
     <div class="engagement-item">
         <span class="engagement-type">Service</span>
         <div class="engagement-content">
