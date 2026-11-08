@@ -895,6 +895,258 @@ display: block;
         letter-spacing: 0.5px;
     }
 }
+
+/* Footnotes */
+.fn-card {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 28px 0;
+  border-top: 1px solid #e8e8e8;
+}
+
+.fn-preview {
+  position: relative;
+  flex: 0 0 280px;
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #f5f5f5;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  transition: box-shadow .25s ease;
+}
+
+.fn-preview img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform .35s ease;
+}
+
+.fn-preview-label {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  padding: 6px 10px;
+  border-radius: 5px;
+  background: rgb(255 255 255 / 95%);
+  color: #0055CC;
+  font-size: .8rem;
+  pointer-events: none;
+  transition: transform .25s ease;
+}
+
+.fn-preview:is(:hover, :focus-visible) {
+  box-shadow: 0 8px 24px rgb(0 0 0 / 10%);
+}
+
+.fn-preview:is(:hover, :focus-visible) img {
+  transform: scale(1.04);
+}
+
+.fn-preview:is(:hover, :focus-visible) .fn-preview-label {
+  transform: translateY(-3px);
+}
+
+.fn-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.fn-copy h3 {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  color: #111;
+}
+
+.fn-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.fn-actions a {
+  color: #0055CC;
+  font-size: .9rem;
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+
+.fn-actions a:hover {
+  text-decoration: underline;
+}
+
+.fn-actions .fn-play {
+  padding: 8px 15px;
+  border: 1px solid #0055CC;
+  border-radius: 6px;
+  transition: background .2s, color .2s;
+}
+
+.fn-actions .fn-play:hover {
+  background: #0055CC;
+  color: white;
+  text-decoration: none;
+}
+
+.fn-card a:focus-visible {
+  outline: 2px solid #0055CC;
+  outline-offset: 4px;
+}
+
+@media (max-width: 768px) {
+  .fn-card {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .fn-preview {
+    flex: auto;
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fn-preview,
+  .fn-preview img,
+  .fn-preview-label,
+  .fn-actions .fn-play {
+    transition: none;
+  }
+
+  .fn-preview:is(:hover, :focus-visible) img,
+  .fn-preview:is(:hover, :focus-visible) .fn-preview-label {
+    transform: none;
+  }
+}
+
+
+/* Footnotes — a little more playful */
+#footnotes {
+  padding: clamp(20px, 4vw, 36px);
+  background: #fffdf7;
+  border: 1px solid #e9e5dc;
+  border-radius: 20px;
+  color: #252525;
+}
+
+#footnotes h2 {
+  display: inline-block;
+  margin-top: 0;
+  padding-bottom: 6px;
+  color: #252525;
+  border-bottom: 4px solid #3455ff;
+}
+
+#footnotes > p:first-of-type {
+  color: #666 !important;
+}
+
+#footnotes .fn-card {
+  --fn-accent: #3455ff;
+  --fn-tint: #eef0ff;
+
+  position: relative;
+  gap: 24px;
+  padding: 22px;
+  margin-top: 20px;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+#footnotes .fn-card + .fn-card {
+  --fn-accent: #b93627;
+  --fn-tint: #fff0eb;
+}
+
+/* A small, colorful mark on each card */
+#footnotes .fn-card::before {
+  content: "";
+  position: absolute;
+  top: 22px;
+  right: 20px;
+  width: 11px;
+  height: 11px;
+  background: var(--fn-accent);
+  border-radius: 50%;
+}
+
+#footnotes .fn-card + .fn-card::before {
+  background: #f05a47;
+  border-radius: 2px;
+  transform: rotate(12deg);
+}
+
+#footnotes .fn-card:hover {
+  border-color: var(--fn-accent);
+  box-shadow: 4px 4px 0 var(--fn-tint);
+}
+
+#footnotes .fn-preview {
+  flex-basis: 240px;
+  background: var(--fn-tint);
+  border-color: #eee;
+  border-radius: 10px;
+}
+
+#footnotes .fn-copy h3 {
+  padding-right: 20px;
+  color: var(--fn-accent);
+}
+
+#footnotes .fn-preview-label {
+  color: var(--fn-accent);
+  background: #fff;
+}
+
+#footnotes .fn-actions a {
+  color: var(--fn-accent);
+}
+
+#footnotes .fn-actions .fn-play {
+  color: var(--fn-accent);
+  background: var(--fn-tint);
+  border: 1px solid transparent;
+  border-radius: 6px;
+}
+
+#footnotes .fn-actions .fn-play:hover {
+  color: #fff;
+  background: var(--fn-accent);
+}
+
+#footnotes .fn-card a:focus-visible {
+  outline-color: var(--fn-accent);
+}
+
+@media (max-width: 768px) {
+  #footnotes .fn-card {
+    padding: 16px;
+  }
+
+  #footnotes .fn-preview {
+    flex-basis: auto;
+  }
+
+  #footnotes .fn-card::before {
+    top: 12px;
+    right: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #footnotes .fn-card {
+    transition: none;
+  }
+}
     </style>
 </head>
 <body>
@@ -917,6 +1169,7 @@ display: block;
             <a href="#presentations">Selected Presentations</a>
             <a href="#teaching">Teaching Experience</a>
             <a href="#skills-training">Skills</a>
+            <a href="#footnotes">*Footnotes*</a>
         </div>
 
         <div class="mobile-footer">
@@ -1685,6 +1938,111 @@ display: block;
             <p><b>Postdoctoral Researcher</b> | Princeton University (2024 - Present)</p>
             <p>Research on climate hazards, remote sensing applications, and machine learning models for environmental resilience.</p>
         </section> -->
+<section id="footnotes" style="margin-top: 60px;">
+  <h2>Footnotes</h2>
+
+  <p style="color: #555; font-style: italic; margin-bottom: 28px;">
+    Small things I couldn’t help making.
+
+    A little corner of my website for ideas that emerge somewhere between debugging code, revising manuscripts, and getting distracted by a completely unrelated thought.
+
+    Some are useful. Some are ridiculous. Most are vibe-coded.
+
+  </p>
+
+  <!-- Error Garden -->
+  <article class="fn-card">
+    <a class="fn-preview"
+       href="https://tianjiaopu.github.io/beautiful-errors/index.html"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Explore Error Garden — opens in a new tab">
+
+      <img src="footnotes-error-garden.png"
+           alt="Error Garden: programming errors transformed into generative flowers."
+           width="1200"
+           height="750"
+           loading="lazy">
+
+      <span class="fn-preview-label" aria-hidden="true">
+        Explore ↗
+      </span>
+    </a>
+
+    <div class="fn-copy">
+      <h3>Error Garden</h3>
+
+      <p class="project-description">
+        When code breaks, something blooms.
+        Turn a frustrating traceback into a generative flower.
+        Your code is still broken, but the garden is thriving.
+      </p>
+
+      <div class="fn-actions">
+        <a class="fn-play"
+           href="https://tianjiaopu.github.io/beautiful-errors/index.html"
+           target="_blank"
+           rel="noopener noreferrer">
+          Grow a flower ↗
+        </a>
+
+        <a href="https://github.com/tianjiaopu/beautiful-errors"
+           target="_blank"
+           rel="noopener noreferrer">
+          GitHub ↗
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <!-- Reviewer XX Shredder -->
+  <article class="fn-card">
+    <a class="fn-preview"
+       href="https://tianjiaopu.github.io/reviewer-xx/"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Play Reviewer XX Shredder — opens in a new tab">
+
+      <img src="footnotes-reviewer-xx.jpg"
+           alt="Reviewer XX Shredder: a reviewer comment passing through a digital paper shredder."
+           width="1200"
+           height="750"
+           loading="lazy">
+
+      <span class="fn-preview-label" aria-hidden="true">
+        Play ↗
+      </span>
+    </a>
+
+    <div class="fn-copy">
+      <h3>Reviewer XX Shredder</h3>
+
+      <p class="project-description">
+        Some comments deserve a different kind of response.
+        A small outlet for the feelings that stay out of
+        the rebuttal letter.
+      </p>
+
+      <div class="fn-actions">
+        <a class="fn-play"
+           href="https://tianjiaopu.github.io/reviewer-xx/"
+           target="_blank"
+           rel="noopener noreferrer">
+          Process a comment ↗
+        </a>
+
+        <a href="https://github.com/tianjiaopu/reviewer-xx"
+           target="_blank"
+           rel="noopener noreferrer">
+          GitHub ↗
+        </a>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+
 <div class="mobile-site-footer">
     <div class="mobile-footer-links">
         <a href="https://scholar.google.com/citations?user=OGFBEx0AAAAJ&hl=en" target="_blank">Scholar</a>
